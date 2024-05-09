@@ -37,4 +37,25 @@ async def repeat(ctx, times: int, content='repeating...'):
     for i in range(times):
         await ctx.send(content)
 
+    '''IMAGE/FILE COMMANDS'''
+@bot.command()
+async def meme(ctx):
+    img_name = random.choice(os.listdir('images'))
+    with open(f'images/{img_name}', 'rb') as f:
+        picture = discord.File(f)
+    await ctx.send(file=picture)
+
+    '''dog stuff'''
+def get_dog_image_url():    
+    url = 'https://random.dog/woof.json'
+    res = requests.get(url)
+    data = res.json()
+    return data['url']
+
+
+@bot.command('dog')
+async def rand_dog(ctx):
+    image_url = get_dog_image_url()
+    await ctx.send(image_url)
+
 bot.run()
