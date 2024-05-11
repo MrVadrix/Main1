@@ -45,17 +45,28 @@ async def meme(ctx):
         picture = discord.File(f)
     await ctx.send(file=picture)
 
-    '''dog stuff'''
-def get_dog_image_url():    
+    '''API'''
+def get_dog_image_url():
     url = 'https://random.dog/woof.json'
     res = requests.get(url)
     data = res.json()
     return data['url']
 
+def get_duck_image_url():
+    url = 'https://random-d.uk/api/random'
+    res = requests.get(url)
+    data = res.json()
+    return data['url']
 
-@bot.command('dog')
-async def rand_dog(ctx):
+@bot.command()
+async def dog(ctx):
     image_url = get_dog_image_url()
     await ctx.send(image_url)
 
+@bot.command()
+async def duck(ctx):
+    image_url = get_duck_image_url()
+    await ctx.send(image_url)
+
+#TOKEN
 bot.run()
