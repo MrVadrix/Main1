@@ -1,4 +1,7 @@
-import discord, random
+import discord
+import random
+import os
+import requests
 from discord.ext import commands
 
 intents = discord.Intents.default()
@@ -23,6 +26,16 @@ async def coin_toss(ctx):
         await ctx.send(f"Монетка упала на орла!")
     elif coin_side == 2:
         await ctx.send(f"Монетка упала на режку!")
+
+@bot.command()
+async def animal(ctx):
+    animal_choice = random.randint(1,2)
+    if animal_choice == 1:
+        image_url = get_dog_image_url()
+        await ctx.send(image_url)
+    elif animal_choice == 2:
+        image_url = get_duck_image_url()
+        await ctx.send(image_url)
 
 @bot.command()
 async def hello(ctx):
