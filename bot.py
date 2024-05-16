@@ -28,16 +28,6 @@ async def coin_toss(ctx):
         await ctx.send(f"Монетка упала на режку!")
 
 @bot.command()
-async def animal(ctx):
-    animal_choice = random.randint(1,2)
-    if animal_choice == 1:
-        image_url = get_dog_image_url()
-        await ctx.send(image_url)
-    elif animal_choice == 2:
-        image_url = get_duck_image_url()
-        await ctx.send(image_url)
-
-@bot.command()
 async def hello(ctx):
     await ctx.send(f'Привет! Я бот {bot.user}!')
 
@@ -59,6 +49,16 @@ async def meme(ctx):
     await ctx.send(file=picture)
 
     '''API'''
+@bot.command()
+async def animal(ctx):
+    animal_choice = random.randint(1,2)
+    if animal_choice == 1:
+        image_url = get_dog_image_url()
+        await ctx.send(image_url)
+    elif animal_choice == 2:
+        image_url = get_duck_image_url()
+        await ctx.send(image_url)
+
 def get_dog_image_url():
     url = 'https://random.dog/woof.json'
     res = requests.get(url)
