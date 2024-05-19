@@ -106,6 +106,7 @@ async def eko_list(ctx):
     await ctx.send("Список команд, содержащих экологические аспекты:")
     await ctx.send("**$global_warming_facts**   ->   факты о глобальном потеплении")
     await ctx.send("**$ice_glaciers_melting**    ->   информация о таянии ледников")
+    await ctx.send("**$global_warming_solving**  ->  способы решить глобальное потепление")
 
 @bot.command()
 async def global_warming_facts(ctx):
@@ -126,6 +127,16 @@ async def ice_glaciers_melting(ctx):
         await ctx.send(f"Вот вам факт о ледниках:\n{ice_glacier_fact2}")
     if ice_glaciers_fact_chosen == 3:
         await ctx.send(f"Вот вам факт о ледниках:\n{ice_glacier_fact3}")
+
+@bot.command()
+async def global_warming_solving(ctx):
+    solving_num = random.randint(1,3)
+    if solving_num == 1:
+        await ctx.send(f"Вот один способ:\nПереход на возобновляемую энергию:\nИспользование солнечной, ветровой и гидроэнергии для сокращения выбросов парниковых газов.")
+    if solving_num == 2:
+        await ctx.send(f"Вот один способ:\nПовышение энергоэффективности:\nУлучшение энергоэффективности в зданиях, транспорте и промышленности для снижения потребления энергии.")
+    if solving_num == 3:
+        await ctx.send(f"Вот один способ:\nСохранение и восстановление лесов:\nЗащита лесов от вырубки и активное восстановление деградированных лесных зон для поглощения углекислого газа.")
 
 #TOKEN
 bot.run()
